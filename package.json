@@ -1,0 +1,19 @@
+{
+  "name": "marufovi-cli",
+  "version": "1.0.0",
+  "description": "A CLI tool to intact with Maruf OVi's gh repos.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "marufovi": "./marufovi.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "Maruf OVi",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^9.2.15",
+    "shelljs": "^0.8.5"
+  }
+}
