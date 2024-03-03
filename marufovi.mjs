@@ -2,6 +2,7 @@
 
 import inquirer from 'inquirer';
 import shell from 'shelljs';
+import open from 'open';
 
 import { categories } from './main/categories.js';
 import { repositoriesByCategory, otherUrls } from './main/repositories.js';
@@ -37,8 +38,13 @@ const mainMenu = async () => {
       if (urlChoice.url === 'gmail') {
         console.log('Gmail: fornet.ovi@gmail.com');
       } else {
-        // Open the selected URL in the browser
-        shell.exec(`open ${otherUrls[urlChoice.url]}`);
+        const urlToOpen = otherUrls[urlChoice.url];
+        try {
+          await open(urlToOpen);
+          console.log(`Opened ${urlToOpen} in the default browser.`);
+        } catch (error) {
+          console.error(`Error opening ${urlToOpen}: ${error.message}`);
+        }
       }
       continue;
     }
@@ -64,7 +70,14 @@ const mainMenu = async () => {
     const selectedRepository = repoChoice.repository;
 
     if (actionChoice.action === 'Open') {
-      shell.exec(`open https://github.com/iamovi/${selectedRepository}`);
+      // Open the GitHub repository in the default browser
+      const urlToOpen = `https://github.com/iamovi/${selectedRepository}`;
+      try {
+        await open(urlToOpen);
+        console.log(`Opened ${urlToOpen} in the default browser.`);
+      } catch (error) {
+        console.error(`Error opening ${urlToOpen}: ${error.message}`);
+      }
     } else if (actionChoice.action === 'Clone') {
       const cloneUrl = `https://github.com/iamovi/${selectedRepository}.git`;
       const cloneSuccess = shell.exec(`git clone ${cloneUrl}`).code === 0;

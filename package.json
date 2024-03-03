@@ -6,14 +6,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "marufovi": "./marufovi.js"
+    "marufovi": "./marufovi.mjs"
   },
   "type": "module",
-  "keywords": ["marufovi", "web-dev", "marufovis-cli"],
+  "keywords": [
+    "marufovi",
+    "web-dev",
+    "marufovis-cli"
+  ],
   "author": "Maruf OVi",
   "license": "MIT",
   "dependencies": {
     "inquirer": "^9.2.15",
+    "open": "^10.0.4",
     "shelljs": "^0.8.5"
   }
 }
